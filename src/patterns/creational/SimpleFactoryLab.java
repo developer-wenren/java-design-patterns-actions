@@ -9,6 +9,12 @@ public class SimpleFactoryLab {
     private static AppleDeviceFactory appleDeviceFactory = new AppleDeviceFactory();
 
     public static void main(String[] args) {
+        // 普通方式创建对象
+        Pad pad1 = new Pad();
+        Phone phone1 = new Phone();
+        Watch watch1 = new Watch();
+
+        // 使用简单模式创建对象
         Device pad = appleDeviceFactory.createDevice(DeviceType.PAD);
         Device phone = appleDeviceFactory.createDevice(DeviceType.PHONE);
         Device watch = appleDeviceFactory.createDevice(DeviceType.WATCH);
