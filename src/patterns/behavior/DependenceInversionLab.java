@@ -5,7 +5,7 @@ package patterns.behavior;
  * @description 依赖注入原则
  * @date 2018/09/20
  */
-public class DependencynIectionLab {
+public class DependenceInversionLab {
 
     public static void main(String[] args) {
         Driver driver = new Driver();
