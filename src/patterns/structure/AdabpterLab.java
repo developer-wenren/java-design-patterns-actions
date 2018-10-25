@@ -9,6 +9,7 @@ public class AdabpterLab {
 
     /**
      * 客户端方法
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -20,7 +21,21 @@ public class AdabpterLab {
         target1.request(); //   do something...
         Target target2 = new Adapter2(new Adaptee());
         target2.request(); //  do something...
+
+
+        // 案例
+        VGA2HDMIAdapter vga2HDMIAdapter = new VGA2HDMIAdapter(new VGA() {
+            @Override
+            public void openVGA() {
+                System.out.println("open VGA");
+            }
+        });
+
+        Laptop laptop = new Laptop();
+        laptop.openHDMIPort(vga2HDMIAdapter);
+
     }
+
 
 }
 
@@ -68,4 +83,41 @@ class Adapter2 implements Target {
         adaptee.doSomething();
     }
 }
+
+interface HDMI {
+    void openHDMI();
+}
+
+interface VGA {
+    void openVGA();
+}
+
+class DisplayScreen implements VGA {
+    @Override
+    public void openVGA() {
+        System.out.println("opening VGA");
+    }
+}
+
+class VGA2HDMIAdapter implements HDMI {
+
+    private VGA vga;
+
+    public VGA2HDMIAdapter(VGA vga) {
+        this.vga = vga;
+    }
+
+    @Override
+    public void openHDMI() {
+        vga.openVGA();
+        System.out.println("openning HDMI");
+    }
+}
+
+class Laptop {
+    public void openHDMIPort(HDMI hdmi) {
+        hdmi.openHDMI();
+    }
+}
+
 
