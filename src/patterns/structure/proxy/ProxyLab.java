@@ -10,5 +10,10 @@ public class ProxyLab {
         ProxyFactory<IOrderService> proxyFactory = new ProxyFactory(new OrderServiceImpl());
         IOrderService orderService = proxyFactory.getProxyObject();
         orderService.saveOrder(new Order(8888, "iPhoneXR"));
+        /**
+         * 代理对象执行前方法增强, 参数:[Order{price=8888, subject='iPhoneXR'}]
+         * 保存订单 Order{price=8888, subject='iPhoneXR'}
+         * 代理对象执行后方法增强
+         */
     }
 }
