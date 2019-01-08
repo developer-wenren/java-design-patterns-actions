@@ -1,4 +1,4 @@
-package patterns.behavior;
+package patterns.behavior.dependence;
 
 /**
  * @author One
